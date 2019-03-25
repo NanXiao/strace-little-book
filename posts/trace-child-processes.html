@@ -1,0 +1,691 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Trace child processes · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="detach-process-on-execve-syscall.html" />
+    
+    
+    <link rel="prev" href="attach-to-running-processes.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="show-help-message-and-version.html">
+            
+                <a href="show-help-message-and-version.html">
+            
+                    
+                    Show help message and version
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="redirect-strace-output-to-file.html">
+            
+                <a href="redirect-strace-output-to-file.html">
+            
+                    
+                    Redirect strace's output to file
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="attach-to-running-processes.html">
+            
+                <a href="attach-to-running-processes.html">
+            
+                    
+                    Attach to running processes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.5" data-path="trace-child-processes.html">
+            
+                <a href="trace-child-processes.html">
+            
+                    
+                    Trace child processes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="detach-process-on-execve-syscall.html">
+            
+                <a href="detach-process-on-execve-syscall.html">
+            
+                    
+                    Detach process on execve syscall
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="detach-strace-and-tracee-processes.html">
+            
+                <a href="detach-strace-and-tracee-processes.html">
+            
+                    
+                    Detach strace and tracee processes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="show-statistics-of-system-calls.html">
+            
+                <a href="show-statistics-of-system-calls.html">
+            
+                    
+                    Show statistics of system calls
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="customize-tracing-event-behavior.html">
+            
+                <a href="customize-tracing-event-behavior.html">
+            
+                    
+                    Customize tracing event behavior
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="change-environment-variables-values.html">
+            
+                <a href="change-environment-variables-values.html">
+            
+                    
+                    Change environment variables' values
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="run-command-as-other-user.html">
+            
+                <a href="run-command-as-other-user.html">
+            
+                    
+                    Run command as other user
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="set-output-format-of-naming-constant.html">
+            
+                <a href="set-output-format-of-naming-constant.html">
+            
+                    
+                    Set output format of naming constant
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13" data-path="customize-string-output.html">
+            
+                <a href="customize-string-output.html">
+            
+                    
+                    Customize string output
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14" data-path="print-instruction-pointer.html">
+            
+                <a href="print-instruction-pointer.html">
+            
+                    
+                    Print instruction pointer
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15" data-path="handle-signals.html">
+            
+                <a href="handle-signals.html">
+            
+                    
+                    Handle signals
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.16" data-path="show-file-descriptor-related-information.html">
+            
+                <a href="show-file-descriptor-related-information.html">
+            
+                    
+                    Show file descriptor related information
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.17" data-path="show-timestamp-of-system-call.html">
+            
+                <a href="show-timestamp-of-system-call.html">
+            
+                    
+                    Show timestamp of system call
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.18" data-path="show-time-spent-in-each-system-call.html">
+            
+                <a href="show-time-spent-in-each-system-call.html">
+            
+                    
+                    Show time spent in each system call
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.19" data-path="print-stack-trace-of-every-system-call.html">
+            
+                <a href="print-stack-trace-of-every-system-call.html">
+            
+                    
+                    Print stack trace of every system call
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.20" data-path="trace-only-system-calls-accessing-path.html">
+            
+                <a href="trace-only-system-calls-accessing-path.html">
+            
+                    
+                    Trace only system calls accessing path
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.21" data-path="suppress-attach-detach-exit-status-messages.html">
+            
+                <a href="suppress-attach-detach-exit-status-messages.html">
+            
+                    
+                    Suppress attach/detach/exit status messages
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.22" data-path="display-strace-debug-information.html">
+            
+                <a href="display-strace-debug-information.html">
+            
+                    
+                    Display strace's debug information
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.23" data-path="set-the-overhead-for-tracing-system-calls.html">
+            
+                <a href="set-the-overhead-for-tracing-system-calls.html">
+            
+                    
+                    Set the overhead for tracing system calls
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.24" data-path="align-return-value-column.html">
+            
+                <a href="align-return-value-column.html">
+            
+                    
+                    Align return value column
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.25" data-path="the-end.html">
+            
+                <a href="the-end.html">
+            
+                    
+                    The end
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Trace child processes</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="trace-child-processes">Trace child processes</h1>
+<p>Check following code:  </p>
+<pre><code># cat fork.c
+#include &lt;sys/types.h&gt;
+#include &lt;unistd.h&gt;
+
+int main(void)
+{
+        int pid = fork();
+        if (pid &lt; 0)
+        {
+                return 1;
+        }
+        else
+        {
+                while (1)
+                {
+                        sleep(1);
+                }
+        }
+        return 0;
+}
+</code></pre><p>By default, <code>strace</code> won&apos;t trace child processes spawned by <code>fork</code>, <code>vfork</code> and <code>clone</code>:  </p>
+<pre><code># gcc fork.c -o fork
+# strace ./fork
+execve(&quot;./fork&quot;, [&quot;./fork&quot;], 0x7ffde8bab140 /* 21 vars */) = 0
+brk(NULL)                               = 0x556c0719c000
+arch_prctl(0x3001 /* ARCH_??? */, 0x7ffd59b05130) = -1 EINVAL (Invalid argument)
+access(&quot;/etc/ld.so.preload&quot;, R_OK)      = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, &quot;/etc/ld.so.cache&quot;, O_RDONLY|O_CLOEXEC) = 3
+fstat(3, {st_mode=S_IFREG|0644, st_size=98317, ...}) = 0
+mmap(NULL, 98317, PROT_READ, MAP_PRIVATE, 3, 0) = 0x7f045e508000
+close(3)                                = 0
+openat(AT_FDCWD, &quot;/usr/lib/libc.so.6&quot;, O_RDONLY|O_CLOEXEC) = 3
+read(3, &quot;\177ELF\2\1\1\3\0\0\0\0\0\0\0\0\3\0&gt;\0\1\0\0\0000C\2\0\0\0\0\0&quot;..., 832) = 832
+lseek(3, 792, SEEK_SET)                 = 792
+read(3, &quot;\4\0\0\0\24\0\0\0\3\0\0\0GNU\0\201\336\t\36\251c\324\233E\371SoK\5H\334&quot;..., 68) = 68
+fstat(3, {st_mode=S_IFREG|0755, st_size=2136840, ...}) = 0
+mmap(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7f045e506000
+lseek(3, 792, SEEK_SET)                 = 792
+read(3, &quot;\4\0\0\0\24\0\0\0\3\0\0\0GNU\0\201\336\t\36\251c\324\233E\371SoK\5H\334&quot;..., 68) = 68
+lseek(3, 864, SEEK_SET)                 = 864
+read(3, &quot;\4\0\0\0\20\0\0\0\5\0\0\0GNU\0\2\0\0\300\4\0\0\0\3\0\0\0\0\0\0\0&quot;, 32) = 32
+mmap(NULL, 1848896, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7f045e342000
+mprotect(0x7f045e364000, 1671168, PROT_NONE) = 0
+mmap(0x7f045e364000, 1355776, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x22000) = 0x7f045e364000
+mmap(0x7f045e4af000, 311296, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x16d000) = 0x7f045e4af000
+mmap(0x7f045e4fc000, 24576, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x1b9000) = 0x7f045e4fc000
+mmap(0x7f045e502000, 13888, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7f045e502000
+close(3)                                = 0
+arch_prctl(ARCH_SET_FS, 0x7f045e507500) = 0
+mprotect(0x7f045e4fc000, 16384, PROT_READ) = 0
+mprotect(0x556c0647d000, 4096, PROT_READ) = 0
+mprotect(0x7f045e54a000, 4096, PROT_READ) = 0
+munmap(0x7f045e508000, 98317)           = 0
+clone(child_stack=NULL, flags=CLONE_CHILD_CLEARTID|CLONE_CHILD_SETTID|SIGCHLD, child_tidptr=0x7f045e5077d0) = 5082
+nanosleep({tv_sec=1, tv_nsec=0}, 0x7ffd59b050d0) = 0
+nanosleep({tv_sec=1, tv_nsec=0}, 0x7ffd59b050d0) = 0
+nanosleep({tv_sec=1, tv_nsec=0}, 0x7ffd59b050d0) = 0
+nanosleep({tv_sec=1, tv_nsec=0}, ^Cstrace: Process 5081 detached
+ &lt;detached ...&gt;
+......
+</code></pre><p>To trace child processes, <code>-f</code> option need to be specified:  </p>
+<pre><code># strace -f ./fork
+execve(&quot;./fork&quot;, [&quot;./fork&quot;], 0x7ffcebee9288 /* 21 vars */) = 0
+brk(NULL)                               = 0x55d21e20b000
+arch_prctl(0x3001 /* ARCH_??? */, 0x7ffd52e9e610) = -1 EINVAL (Invalid argument)
+access(&quot;/etc/ld.so.preload&quot;, R_OK)      = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, &quot;/etc/ld.so.cache&quot;, O_RDONLY|O_CLOEXEC) = 3
+fstat(3, {st_mode=S_IFREG|0644, st_size=98317, ...}) = 0
+mmap(NULL, 98317, PROT_READ, MAP_PRIVATE, 3, 0) = 0x7fd7e2fd8000
+close(3)                                = 0
+openat(AT_FDCWD, &quot;/usr/lib/libc.so.6&quot;, O_RDONLY|O_CLOEXEC) = 3
+read(3, &quot;\177ELF\2\1\1\3\0\0\0\0\0\0\0\0\3\0&gt;\0\1\0\0\0000C\2\0\0\0\0\0&quot;..., 832) = 832
+lseek(3, 792, SEEK_SET)                 = 792
+read(3, &quot;\4\0\0\0\24\0\0\0\3\0\0\0GNU\0\201\336\t\36\251c\324\233E\371SoK\5H\334&quot;..., 68) = 68
+fstat(3, {st_mode=S_IFREG|0755, st_size=2136840, ...}) = 0
+mmap(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7fd7e2fd6000
+lseek(3, 792, SEEK_SET)                 = 792
+read(3, &quot;\4\0\0\0\24\0\0\0\3\0\0\0GNU\0\201\336\t\36\251c\324\233E\371SoK\5H\334&quot;..., 68) = 68
+lseek(3, 864, SEEK_SET)                 = 864
+read(3, &quot;\4\0\0\0\20\0\0\0\5\0\0\0GNU\0\2\0\0\300\4\0\0\0\3\0\0\0\0\0\0\0&quot;, 32) = 32
+mmap(NULL, 1848896, PROT_READ, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fd7e2e12000
+mprotect(0x7fd7e2e34000, 1671168, PROT_NONE) = 0
+mmap(0x7fd7e2e34000, 1355776, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x22000) = 0x7fd7e2e34000
+mmap(0x7fd7e2f7f000, 311296, PROT_READ, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x16d000) = 0x7fd7e2f7f000
+mmap(0x7fd7e2fcc000, 24576, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x1b9000) = 0x7fd7e2fcc000
+mmap(0x7fd7e2fd2000, 13888, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7fd7e2fd2000
+close(3)                                = 0
+arch_prctl(ARCH_SET_FS, 0x7fd7e2fd7500) = 0
+mprotect(0x7fd7e2fcc000, 16384, PROT_READ) = 0
+mprotect(0x55d21d27e000, 4096, PROT_READ) = 0
+mprotect(0x7fd7e301a000, 4096, PROT_READ) = 0
+munmap(0x7fd7e2fd8000, 98317)           = 0
+clone(child_stack=NULL, flags=CLONE_CHILD_CLEARTID|CLONE_CHILD_SETTID|SIGCHLD, child_tidptr=0x7fd7e2fd77d0) = 5087
+strace: Process 5087 attached
+[pid  5086] nanosleep({tv_sec=1, tv_nsec=0},  &lt;unfinished ...&gt;
+[pid  5087] nanosleep({tv_sec=1, tv_nsec=0},  &lt;unfinished ...&gt;
+[pid  5086] &lt;... nanosleep resumed&gt; 0x7ffd52e9e5b0) = 0
+[pid  5087] &lt;... nanosleep resumed&gt; 0x7ffd52e9e5b0) = 0
+[pid  5087] nanosleep({tv_sec=1, tv_nsec=0},  &lt;unfinished ...&gt;
+[pid  5086] nanosleep({tv_sec=1, tv_nsec=0},  &lt;unfinished ...&gt;
+......
+</code></pre><p>Let&apos;s see a more complicated case:  </p>
+<pre><code>#include &lt;sys/types.h&gt;
+#include &lt;unistd.h&gt;
+#include &lt;omp.h&gt;
+
+int main(void)
+{
+    #pragma omp parallel num_threads(2)
+    {
+        sleep(30);
+        int pid = fork();
+        while (1)
+        {
+            sleep(1);
+        }
+    }
+    return 0;
+}
+</code></pre><p>Above code will spawn <code>2</code> threads, and every thread will fork another child process after waiting <code>30</code> seconds:  </p>
+<pre><code># ./fork &amp;
+[1] 5239
+# ps -T 5239
+  PID  SPID TTY      STAT   TIME COMMAND
+ 5239  5239 pts/1    Sl     0:00 ./fork
+ 5239  5240 pts/1    Sl     0:00 ./fork
+</code></pre><p>Use any <code>SPID</code> (<code>5239</code> or <code>5240</code> in this case), <code>strace</code> will trace all child processes of threads belong to current process:  </p>
+<pre><code># strace -p 5239 -f
+strace: Process 5239 attached with 2 threads
+[pid  5240] restart_syscall(&lt;... resuming interrupted nanosleep ...&gt; &lt;unfinished ...&gt;
+[pid  5239] restart_syscall(&lt;... resuming interrupted nanosleep ...&gt; &lt;unfinished ...&gt;
+[pid  5240] &lt;... restart_syscall resumed&gt; ) = 0
+[pid  5239] &lt;... restart_syscall resumed&gt; ) = 0
+[pid  5239] clone(child_stack=NULL, flags=CLONE_CHILD_CLEARTID|CLONE_CHILD_SETTID|SIGCHLD, child_tidptr=0x7f6dd132ced0) = 5245
+[pid  5240] futex(0x7f6dd14f47a0, FUTEX_WAIT_PRIVATE, 2, NULL) = -1 EAGAIN (Resource temporarily unavailable)
+[pid  5240] clone(strace: Process 5245 attached
+child_stack=NULL, flags=CLONE_CHILD_CLEARTID|CLONE_CHILD_SETTID|SIGCHLD, child_tidptr=0x7f6dd132b9d0) = 5246
+[pid  5240] futex(0x7f6dd14f47a0, FUTEX_WAKE_PRIVATE, 1) = 0
+[pid  5240] nanosleep({tv_sec=1, tv_nsec=0},  &lt;unfinished ...&gt;
+[pid  5239] futex(0x7f6dd14f47a0, FUTEX_WAKE_PRIVATE, 1) = 0
+[pid  5239] nanosleep({tv_sec=1, tv_nsec=0}, strace: Process 5246 attached
+ &lt;unfinished ...&gt;
+[pid  5246] set_robust_list(0x7f6dd132b9e0, 24) = 0
+[pid  5246] futex(0x7f6dd14f47a0, FUTEX_WAKE_PRIVATE, 1) = 0
+[pid  5246] nanosleep({tv_sec=1, tv_nsec=0},  &lt;unfinished ...&gt;
+[pid  5245] set_robust_list(0x7f6dd132cee0, 24) = 0
+[pid  5245] nanosleep({tv_sec=1, tv_nsec=0},  &lt;unfinished ...&gt;
+......
+</code></pre>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="attach-to-running-processes.html" class="navigation navigation-prev " aria-label="Previous page: Attach to running processes">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="detach-process-on-execve-syscall.html" class="navigation navigation-next " aria-label="Next page: Detach process on execve syscall">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Trace child processes","level":"1.5","depth":1,"next":{"title":"Detach process on execve syscall","level":"1.6","depth":1,"path":"posts/detach-process-on-execve-syscall.md","ref":"posts/detach-process-on-execve-syscall.md","articles":[]},"previous":{"title":"Attach to running processes","level":"1.4","depth":1,"path":"posts/attach-to-running-processes.md","ref":"posts/attach-to-running-processes.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"posts/trace-child-processes.md","mtime":"2019-03-02T04:07:22.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-25T01:30:12.591Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

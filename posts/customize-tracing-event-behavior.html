@@ -1,0 +1,776 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Customize tracing event behavior · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="change-environment-variables-values.html" />
+    
+    
+    <link rel="prev" href="show-statistics-of-system-calls.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="show-help-message-and-version.html">
+            
+                <a href="show-help-message-and-version.html">
+            
+                    
+                    Show help message and version
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="redirect-strace-output-to-file.html">
+            
+                <a href="redirect-strace-output-to-file.html">
+            
+                    
+                    Redirect strace's output to file
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="attach-to-running-processes.html">
+            
+                <a href="attach-to-running-processes.html">
+            
+                    
+                    Attach to running processes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="trace-child-processes.html">
+            
+                <a href="trace-child-processes.html">
+            
+                    
+                    Trace child processes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="detach-process-on-execve-syscall.html">
+            
+                <a href="detach-process-on-execve-syscall.html">
+            
+                    
+                    Detach process on execve syscall
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="detach-strace-and-tracee-processes.html">
+            
+                <a href="detach-strace-and-tracee-processes.html">
+            
+                    
+                    Detach strace and tracee processes
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="show-statistics-of-system-calls.html">
+            
+                <a href="show-statistics-of-system-calls.html">
+            
+                    
+                    Show statistics of system calls
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.9" data-path="customize-tracing-event-behavior.html">
+            
+                <a href="customize-tracing-event-behavior.html">
+            
+                    
+                    Customize tracing event behavior
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="change-environment-variables-values.html">
+            
+                <a href="change-environment-variables-values.html">
+            
+                    
+                    Change environment variables' values
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="run-command-as-other-user.html">
+            
+                <a href="run-command-as-other-user.html">
+            
+                    
+                    Run command as other user
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="set-output-format-of-naming-constant.html">
+            
+                <a href="set-output-format-of-naming-constant.html">
+            
+                    
+                    Set output format of naming constant
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13" data-path="customize-string-output.html">
+            
+                <a href="customize-string-output.html">
+            
+                    
+                    Customize string output
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.14" data-path="print-instruction-pointer.html">
+            
+                <a href="print-instruction-pointer.html">
+            
+                    
+                    Print instruction pointer
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.15" data-path="handle-signals.html">
+            
+                <a href="handle-signals.html">
+            
+                    
+                    Handle signals
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.16" data-path="show-file-descriptor-related-information.html">
+            
+                <a href="show-file-descriptor-related-information.html">
+            
+                    
+                    Show file descriptor related information
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.17" data-path="show-timestamp-of-system-call.html">
+            
+                <a href="show-timestamp-of-system-call.html">
+            
+                    
+                    Show timestamp of system call
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.18" data-path="show-time-spent-in-each-system-call.html">
+            
+                <a href="show-time-spent-in-each-system-call.html">
+            
+                    
+                    Show time spent in each system call
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.19" data-path="print-stack-trace-of-every-system-call.html">
+            
+                <a href="print-stack-trace-of-every-system-call.html">
+            
+                    
+                    Print stack trace of every system call
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.20" data-path="trace-only-system-calls-accessing-path.html">
+            
+                <a href="trace-only-system-calls-accessing-path.html">
+            
+                    
+                    Trace only system calls accessing path
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.21" data-path="suppress-attach-detach-exit-status-messages.html">
+            
+                <a href="suppress-attach-detach-exit-status-messages.html">
+            
+                    
+                    Suppress attach/detach/exit status messages
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.22" data-path="display-strace-debug-information.html">
+            
+                <a href="display-strace-debug-information.html">
+            
+                    
+                    Display strace's debug information
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.23" data-path="set-the-overhead-for-tracing-system-calls.html">
+            
+                <a href="set-the-overhead-for-tracing-system-calls.html">
+            
+                    
+                    Set the overhead for tracing system calls
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.24" data-path="align-return-value-column.html">
+            
+                <a href="align-return-value-column.html">
+            
+                    
+                    Align return value column
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.25" data-path="the-end.html">
+            
+                <a href="the-end.html">
+            
+                    
+                    The end
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Customize tracing event behavior</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="customize-tracing-event-behavior">Customize tracing event behavior</h1>
+<p><code>-e expression</code> is the most complicated option which you use a qualifying expression to denote which events to trace or how to trace them. The format of expression is:  </p>
+<pre><code>[qualifier=][!][?]value1[,[?]value2]...
+</code></pre><p>Qualifier can be <code>trace</code> (or <code>t</code>), <code>abbrev</code>(or <code>a</code>), <code>verbose</code> (or <code>v</code>), <code>raw</code> (or <code>x</code>), <code>signal</code>/<code>signals</code> (or <code>s</code>), <code>read</code>/<code>reads</code> (or <code>r</code>), <code>write</code>/<code>writes</code> (or <code>w</code>), <code>fault</code>, <code>inject</code>, or <code>kvm</code>. If no qualifier is specified, <code>trace</code> is the used. E.g., <code>-e open</code> is equal to <code>-e trace=open</code> or <code>-e t=open</code>.  </p>
+<p>The value part can contain one or more values, and it depends on the qualifier. E.g., <code>-e t=open,write</code> means only output <code>open</code> and <code>write</code> system calls. <code>!</code> is used to filter out the specified system call. E.g.:  </p>
+<pre><code># strace -e trace=\!write ls
+</code></pre><p>This won&apos;t trace <code>write</code> system call (The <code>!</code> need to be escaped in <code>bash</code> shell). <code>?</code> is used to suppress the error. Compare the following outputs:</p>
+<pre><code># strace -e trace=op ls
+strace: invalid system call &apos;op&apos;
+# strace -e trace=?op ls
+project
++++ exited with 0 +++
+</code></pre><p>&quot;<code>@64</code>&quot;, &quot;<code>@32</code>&quot;, or &quot;<code>@x32</code>&quot; suffixes can be used to specify system calls only for the <code>64-bit</code>, <code>32-bit</code>, or <code>32-on-64-bit</code> respectively.    </p>
+<p>The value can also be <code>all</code> or <code>none</code> which mean following all system calls or nothing:  </p>
+<pre><code># strace -e trace=all ls
+execve(&quot;/usr/bin/ls&quot;, [&quot;ls&quot;], 0x7ffd5ae4ff10 /* 20 vars */) = 0
+brk(NULL)                               = 0x55aae08a1000
+arch_prctl(0x3001 /* ARCH_??? */, 0x7ffcdecdc3e0) = -1 EINVAL (Invalid argument)
+access(&quot;/etc/ld.so.preload&quot;, R_OK)      = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, &quot;/etc/ld.so.cache&quot;, O_RDONLY|O_CLOEXEC) = 3
+fstat(3, {st_mode=S_IFREG|0644, st_size=98317, ...}) = 0
+......
+# strace -e trace=none ls
+project
++++ exited with 0 +++
+</code></pre><h2 id="values-for-trace-qualifier">Values for trace qualifier</h2>
+<p>Below table describes the valid values for <code>trace</code> qualifier (Most are just copied from <a href="http://man7.org/linux/man-pages/man1/strace.1.html" target="_blank">strace manual</a>):  </p>
+<table>
+  <tr>
+    <th>Value</th>
+    <th>Meaning</th> 
+  </tr>
+  <tr>
+    <td>set</td>
+    <td>Trace the system calls in set. E.g., &quot;strace -e write ls&quot;.</td> 
+  </tr>
+  <tr>
+    <td>/regex</td>
+    <td>Trace all the system calls which match regular expression. E.g., &quot;strace -e /wr* ls&quot;.</td> 
+  </tr>
+  <tr>
+    <td>%file</td>
+    <td>Trace all the system calls which take a file name as an argument. It incules open, stat, etc.</td> 
+  </tr>
+  <tr>
+    <td>%process</td>
+    <td>Trace all the system calls which involve process management.Such as fork, wait, etc.</td> 
+  </tr>
+  <tr>
+    <td>%network(or %net)</td>
+    <td>Trace all the network related system calls.</td> 
+  </tr>
+  <tr>
+    <td>%signal</td>
+    <td>Trace all signal related system calls.</td> 
+  </tr>
+  <tr>
+    <td>%ipc</td>
+    <td>Trace all IPC related system calls.</td> 
+  </tr>
+  <tr>
+    <td>%desc</td>
+    <td>Trace all file descriptor related system calls.</td> 
+  </tr>
+  <tr>
+    <td>%memory</td>
+    <td>Trace all memory mapping related system calls.</td> 
+  </tr>
+  <tr>
+    <td>%stat</td>
+    <td>Trace stat syscall variants.</td> 
+  </tr>
+  <tr>
+    <td>%lstat</td>
+    <td>Trace lstat syscall variants.</td> 
+  </tr>
+  <tr>
+    <td>%fstat</td>
+    <td>Trace fstat and fstatat syscall variants.</td> 
+  </tr>
+  <tr>
+    <td>%%stat</td>
+    <td>Trace syscalls used for requesting file status (stat, lstat, fstat, fstatat, statx, and their variants).</td> 
+  </tr>
+  <tr>
+    <td>%statfs</td>
+    <td>Trace statfs, statfs64, statvfs, osf_statfs, and osf_statfs64 system calls. The same effect can be achieved with -e trace=/^(.*_)?statv?fs regular expression.</td> 
+  </tr>
+  <tr>
+    <td>%fstatfs</td>
+    <td>Trace fstatfs, fstatfs64, fstatvfs, osf_fstatfs, and osf_fstatfs64 system calls.  The same effect can be achieved with -e trace=/fstatv?fs regular expression.</td> 
+  </tr>
+  <tr>
+    <td>%%statfs</td>
+    <td>Trace syscalls related to file system statistics (statfs-like, fstatfs-like, and ustat). The same effect can be achieved with -e trace=/statv?fs|fsstat|ustat regular expression.</td> 
+  </tr>
+  <tr>
+    <td>%pure</td>
+    <td>Trace syscalls that always succeed and have no arguments. Currently, this list includes arc_gettls, getdtablesize, getegid, getegid32, geteuid, geteuid32, getgid, getgid32, getpagesize, getpgrp, getpid, getppid, get_thread_area (on architectures other than x86), gettid, get_tls, getuid, getuid32, getxgid, getxpid, getxuid, kern_features, and metag_get_tls.</td> 
+  </tr>
+</table>
+
+<p>To know detailed information about which category a specific system call belongs to, you can refer <a href="https://github.com/strace/strace/blob/master/sysent.h" target="_blank">sysent.h</a>, <a href="https://github.com/strace/strace/blob/master/sysent_shorthand_defs.h" target="_blank">sysent_shorthand_defs.h</a>, and <code>syscallent.h</code> for your machine (E.g., <code>X86_64</code> file is <a href="https://github.com/strace/strace/blob/master/linux/x86_64/syscallent.h" target="_blank">here</a>).  </p>
+<h2 id="abbrev-qualifier">abbrev qualifier</h2>
+<p><code>abbrev</code> qualifier is used to omit printing each member of large structures. The default value is <code>all</code>. The following example shows how to check environment variables when executing <code>execve</code> system call:  </p>
+<pre><code># strace -e trace=execve -e abbrev=none ls
+execve(&quot;/usr/bin/ls&quot;, [&quot;ls&quot;], [&quot;SHELL=/bin/bash&quot;, &quot;PWD=/root&quot;, &quot;LOGNAME=root&quot;, &quot;XDG_SESSION_TYPE=tty&quot;, &quot;HOME=/root&quot;, &quot;LANG=C&quot;, &quot;SSH_CONNECTION=10.218.195.134 65&quot;..., &quot;XDG_SESSION_CLASS=user&quot;, &quot;TERM=xterm&quot;, &quot;USER=root&quot;, &quot;SHLVL=1&quot;, &quot;XDG_SESSION_ID=19&quot;, &quot;XDG_RUNTIME_DIR=/run/user/0&quot;, &quot;SSH_CLIENT=10.218.195.134 65285 &quot;..., &quot;PATH=/root/.cargo/bin:/usr/local&quot;..., &quot;DBUS_SESSION_BUS_ADDRESS=unix:pa&quot;..., &quot;HG=/usr/bin/hg&quot;, &quot;MAIL=/var/spool/mail/root&quot;, &quot;SSH_TTY=/dev/pts/0&quot;, &quot;_=/usr/bin/strace&quot;]) = 0
++++ exited with 0 +++
+</code></pre><p>Actually, <code>strace</code> has <code>-v</code> option which just leverages <code>abbrev</code> qualifier (code is <a href="https://github.com/strace/strace/blob/e0f0071b36215de8a592bf41ec007a794b550d45/strace.c#L1690" target="_blank">here</a>):  </p>
+<pre><code>    ......
+    case &apos;v&apos;:
+        qualify(&quot;abbrev=none&quot;);
+        break;
+    ......
+</code></pre><h2 id="verbose-qualifier">verbose qualifier</h2>
+<p><code>verbose</code> qualifier is used to instruct whether deference structures of system calls or not. The default value is <code>all</code>. E.g., if you don&apos;t want to deference structures of <code>execve</code>, you can do this:  </p>
+<pre><code># strace -e trace=execve -e verbose=execve ls
+execve(&quot;/usr/bin/ls&quot;, [&quot;ls&quot;], 0x7fffc8641bd0 /* 20 vars */) = 0
++++ exited with 0 +++
+</code></pre><h2 id="raw-qualifier">raw qualifier</h2>
+<p><code>raw</code> qualifier is used to print undecoded arguments in hexadecimal format. You can compare the output of <code>access</code> without and with <code>raw</code> qualifier:  </p>
+<pre><code># strace -e access  ls
+access(&quot;/etc/ld.so.preload&quot;, R_OK)      = -1 ENOENT (No such file or directory)
++++ exited with 0 +++
+# strace -e access -e raw=access ls
+access(0x7f11091183a0, 0x4)             = -1 ENOENT (No such file or directory)
++++ exited with 0 +++
+</code></pre><h2 id="signal-qualifier">signal qualifier</h2>
+<p>By default, <code>strace</code> will capture all signals. <code>signal</code> qualifier can be used to customize which signals should be traced. Check the following code:  </p>
+<pre><code># cat dead_loop.c
+#include &lt;unistd.h&gt;
+
+int main(void)
+{
+        while (1)
+        {
+                sleep(1);
+        }
+        return 0;
+}
+</code></pre><p>Build and run it in one terminal:  </p>
+<pre><code># gcc dead_loop.c -o dead_loop
+# ./dead_loop
+</code></pre><p>Use <code>strace</code> to track it in another terminal:  </p>
+<pre><code># strace -p `pidof dead_loop`
+strace: Process 18085 attached
+restart_syscall(&lt;... resuming interrupted nanosleep ...&gt;) = 0
+nanosleep({tv_sec=1, tv_nsec=0}, 0x7ffd8492c6f0) = 0
+......
+</code></pre><p>Press <code>Ctrl+C</code> in first terminal to kill <code>dead_loop</code> process, you will find <code>SIGINT</code> related information is printed out in second terminal:  </p>
+<pre><code># strace -p `pidof dead_loop`
+strace: Process 18085 attached
+restart_syscall(&lt;... resuming interrupted nanosleep ...&gt;) = 0
+nanosleep({tv_sec=1, tv_nsec=0}, 0x7ffd8492c6f0) = 0
+......
+nanosleep({tv_sec=1, tv_nsec=0}, {tv_sec=0, tv_nsec=825212664}) = ? ERESTART_RESTARTBLOCK (Interrupted by signal)
+--- SIGINT {si_signo=SIGINT, si_code=SI_KERNEL} ---
++++ killed by SIGINT +++
+</code></pre><p>If you ignore <code>SIGINT</code>, the <code>SIGINT</code> won&apos;t be showed:  </p>
+<pre><code># strace -p `pidof dead_loop` -e signal=\!int
+strace: Process 18091 attached
+restart_syscall(&lt;... resuming interrupted nanosleep ...&gt;) = 0
+nanosleep({tv_sec=1, tv_nsec=0}, 0x7ffc92b62710) = 0
+nanosleep({tv_sec=1, tv_nsec=0}, 0x7ffc92b62710) = 0
+nanosleep({tv_sec=1, tv_nsec=0}, 0x7ffc92b62710) = 0
+nanosleep({tv_sec=1, tv_nsec=0}, {tv_sec=0, tv_nsec=361293365}) = ? ERESTART_RESTARTBLOCK (Interrupted by signal)
+</code></pre><h2 id="read-and-write-qualifiers">read and write qualifiers</h2>
+<p><code>read</code>/<code>write</code> qualifiers are used to perform a full hexadecimal and ASCII dump of all the data read/write from file descriptors. Check following example:  </p>
+<pre><code># strace -e read=3 ls
+execve(&quot;/usr/bin/ls&quot;, [&quot;ls&quot;], 0x7ffd0fd7d750 /* 21 vars */) = 0
+......
+read(3, &quot;\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0&gt;\0\1\0\0\0  \0\0\0\0\0\0&quot;..., 832) = 832
+ | 00000  7f 45 4c 46 02 01 01 00  00 00 00 00 00 00 00 00  .ELF............ |
+ | 00010  03 00 3e 00 01 00 00 00  20 20 00 00 00 00 00 00  ..&gt;.....  ...... |
+ | 00020  40 00 00 00 00 00 00 00  38 52 00 00 00 00 00 00  @.......8R...... |
+ | 00030  00 00 00 00 40 00 38 00  09 00 40 00 16 00 15 00  ....@.8...@..... |
+ | 00040  01 00 00 00 04 00 00 00  00 00 00 00 00 00 00 00  ................ |
+ | 00050  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  ................ |
+ | 00060  b0 14 00 00 00 00 00 00  b0 14 00 00 00 00 00 00  ................ |
+......
+</code></pre><h2 id="inject-qualifier">inject qualifier</h2>
+<p>The definition of <code>inject</code> qualifier is like this:  </p>
+<pre><code>-e inject=set[:error=errno|:retval=value][:signal=sig][:syscall=syscall][:delay_enter=usecs][:delay_exit=usecs][:when=expr]
+</code></pre><p>It is used to tamper a specific set of system calls.  </p>
+<p><code>:error=errno</code> can set the wrong return value of a system call. E.g.:  </p>
+<pre><code># strace -e inject=read:error=1 ls
+......
+read(3, 0x7ffca47eb418, 832)            = -1 EPERM (Operation not permitted) (INJECTED)
+close(3)                                = 0
+......
+</code></pre><p><code>:retval=value</code> does the reverse thing: set the correct return value:  </p>
+<pre><code># strace -e inject=arch_prctl:retval=0 ls
+......                              = 0x561afd1f6000
+arch_prctl(0x3001 /* ARCH_??? */, 0x7ffdcba37700) = 0 (INJECTED)
+</code></pre><p>Please notice <code>:error=errno</code> and <code>:retval=value</code> are mutually exclusive.  </p>
+<p><code>:signal=sig</code> sets which signal will be delivered when entering a system call:  </p>
+<pre><code># strace -e inject=read:signal=SIGSEGV ls
+......
+read(3, &quot;\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0&gt;\0\1\0\0\0  \0\0\0\0\0\0&quot;..., 832) = 832
+--- SIGSEGV {si_signo=SIGSEGV, si_code=SI_KERNEL, si_addr=NULL} ---
++++ killed by SIGSEGV (core dumped) +++
+Segmentation fault (core dumped)
+</code></pre><p><code>:delay_enter=usecs</code>/<code>:delay_exit=usecs</code> are used to set how many microseconds are delayed before entering/exiting system calls:  </p>
+<pre><code># strace -e inject=read:delay_enter=10:delay_exit=10 ls
+</code></pre><p><code>:syscall=syscall</code> is used to inject the specified system call, only &quot;pure&quot; system call is allowed now (please refer <code>Values for trace qualifier</code> section).  </p>
+<p><code>:when=expr</code> is used to control the frequency of injection. By default every invocation will be injected. The format of the expression is one of the following:</p>
+<table>
+  <tr>
+    <th>Frequency</th>
+    <th>Meaning</th> 
+  </tr>
+  <tr>
+    <td>first</td>
+    <td>For every syscall from the set, perform an injection for the syscall invocation number first only.</td> 
+  </tr>
+  <tr>
+    <td>first+</td>
+    <td>For every syscall from the set, perform injections for the syscall invocation number first and all subsequent invocations.</td> 
+  </tr>
+  <tr>
+    <td>first+step</td>
+    <td>For every syscall from the set, perform injections for syscall invocations number first, first+step, first+step+step, and so on. </td> 
+  </tr>
+</table>
+
+<p>For example:  </p>
+<pre><code># strace -e inject=read:error=1:when=2 ls
+execve(&quot;/usr/bin/ls&quot;, [&quot;ls&quot;], 0x7fff64d98c70 /* 21 vars */) = 0
+......
+read(3, &quot;\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0&gt;\0\1\0\0\0  \0\0\0\0\0\0&quot;..., 832) = 832
+......
+read(3, 0x7ffec8c113a8, 832)            = -1 EPERM (Operation not permitted) (INJECTED)
+......
+</code></pre><p>The <code>inject</code> takes effect when calling <code>read</code> in the second time.  </p>
+<p>There are two more tracing events: <code>fault=set[:error=errno][:when=expr]</code> is similar as <code>inject</code>, and <code>kvm=vcpu</code> is used to print exit reason of <code>kvm</code> <code>vcpu</code> (requires kernel version <code>4.16</code> or later).</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="show-statistics-of-system-calls.html" class="navigation navigation-prev " aria-label="Previous page: Show statistics of system calls">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="change-environment-variables-values.html" class="navigation navigation-next " aria-label="Next page: Change environment variables' values">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Customize tracing event behavior","level":"1.9","depth":1,"next":{"title":"Change environment variables' values","level":"1.10","depth":1,"path":"posts/change-environment-variables-values.md","ref":"posts/change-environment-variables-values.md","articles":[]},"previous":{"title":"Show statistics of system calls","level":"1.8","depth":1,"path":"posts/show-statistics-of-system-calls.md","ref":"posts/show-statistics-of-system-calls.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"posts/customize-tracing-event-behavior.md","mtime":"2019-03-15T09:47:58.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-25T01:30:12.591Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
