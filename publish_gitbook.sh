@@ -1,3 +1,6 @@
+# install gitbook-cli
+npm install -g gitbook-cli
+
 # install the plugins and build the static site
 gitbook install && gitbook build
 
